@@ -1,9 +1,8 @@
 #!/bin/bash
 # Tune and benchmark both spark nodes in parallel
-SPARK1=192.168.1.223
-SPARK2=192.168.1.82
-MAX=2400
-THRESHOLD=58
+
+SCRIPT_DIR="$(dirname "$0")"
+set -a && . "$SCRIPT_DIR/.env" && set +a
 
 echo "Tuning nodes..."
 ssh "$SPARK1" "sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'" &

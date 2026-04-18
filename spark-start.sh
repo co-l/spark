@@ -3,13 +3,9 @@
 # Safely kills any existing session first.
 # Usage: ./spark-start.sh [extra run-recipe.py args]
 
-SPARK1=192.168.1.223
-SESSION=vllm
-RECIPE=minimax-m2.5-awq
-LOG=/tmp/vllm.log
-
 SCRIPT_DIR="$(dirname "$0")"
-"$SCRIPT_DIR/spark-tune.sh"
+set -a && . "$SCRIPT_DIR/.env" && set +a
+"$SCRIPT_DIR/spark-tune.sh" || exit
 
 ssh "$SPARK1" "
   tmux kill-session -t $SESSION 2>/dev/null || true

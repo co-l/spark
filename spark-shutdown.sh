@@ -1,10 +1,8 @@
 #!/bin/bash
 # Stop the cluster then shut down both spark nodes.
 
-SPARK1=192.168.1.223
-SPARK2=192.168.1.82
-
 SCRIPT_DIR="$(dirname "$0")"
+set -a && . "$SCRIPT_DIR/.env" && set +a
 "$SCRIPT_DIR/spark-stop.sh"
 
 echo "Shutting down nodes..."

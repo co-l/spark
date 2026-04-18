@@ -2,10 +2,8 @@
 # Cleanly stop the vLLM cluster: stops docker containers on both nodes
 # and kills the tmux session on spark1.
 
-SPARK1=192.168.1.223
-SPARK2=192.168.1.82
-SESSION=vllm
-CONTAINER=vllm_node
+SCRIPT_DIR="$(dirname "$0")"
+set -a && . "$SCRIPT_DIR/.env" && set +a
 
 echo "Stopping cluster..."
 
